@@ -81,7 +81,7 @@ async def mathPhoneState(message: types.Message, state: FSMContext):
 @dp.message_handler(text="ℹ️Taklif & Shikoyatlar")
 async def contacts(message: types.Message):
     await message.answer(
-        "Fikrlaringizni yozib qoldiring, sizning fikringiz shaxsan ceo ga jo'natiladi"
+        "Fikrlaringizni yozib qoldiring, sizning fikringiz shaxsan ceo ga jo'natiladi",
     )
     await OpinionState.writing.set()
 
@@ -91,6 +91,7 @@ async def send_ceo(message: types.Message, state: FSMContext):
     await state.finish()
     await bot.send_message("1038753516",
                            f"username: @{message.from_user.username}\nfullname: {message.from_user.full_name}\nfikr: <b>{message.text}</b>\n")
+    await message.answer("Shikoyatingiz ceo ga jo'natildi!")
 
 
 @dp.message_handler(text="📞Kontaktlar")
